@@ -1,5 +1,5 @@
-namespace SunamoStringJoin._sunamo;
-internal class SH
-{
-    internal static Func<string, string, string[], string> ReplaceAll;
-}
+//namespace SunamoStringJoin._sunamo;
+//public class SH
+//{
+//    public static Func<string, string, string[], string> ReplaceAll;
+//}

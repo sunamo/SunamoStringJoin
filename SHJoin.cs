@@ -1,8 +1,3 @@
-using SunamoI18N;
-using SunamoI18N.Values;
-using SunamoValues;
-using SunamoValues.Values;
-
 namespace SunamoStringJoin;
 
 public class SHJoin
@@ -282,6 +277,7 @@ public class SHJoin
         {
             v2List.Add(item);
         }
+
         int i = 0;
         foreach (var item in v1)
         {
@@ -289,24 +285,6 @@ public class SHJoin
         }
 
         return SHSE.TrimEnd(sb.ToString(), delimAfter);
-    }
-
-    public static string JoinPairs(params string[] parts)
-    {
-        return JoinPairs(AllStringsSE.sc, AllStringsSE.cs, parts);
-    }
-    public static string JoinPairs(string firstDelimiter, string secondDelimiter, params string[] parts)
-    {
-        InitApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", @"args", parts);
-        InitApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", @"args", parts);
-
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < parts.Length; i++)
-        {
-            sb.Append(parts[i++] + firstDelimiter);
-            sb.Append(parts[i] + secondDelimiter);
-        }
-        return sb.ToString();
     }
 
     //public static string JoinStringParams(string name, params string[] labels) { return null; }
@@ -362,7 +340,7 @@ public class SHJoin
     /// <param name="parts"></param>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = CA.WrapWithIfFunc(IsNumber, true, AllStringsSE.space, AllStringsSE.qm, parts).ToArray();
+        parts = CASH.WrapWithIfFunc(IsNumber, true, AllStringsSE.space, AllStringsSE.qm, parts).ToArray();
         return SHJoin.Join(delimiter, parts);
     }
     public static string JoinStringExceptIndexes(object delimiter, IList parts, params int[] v2)

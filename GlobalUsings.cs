@@ -7,6 +7,5 @@ global using SunamoExceptions.OnlyInSE;
 global using SunamoAttributes;
 global using SunamoExceptions;
 global using SunamoBts;
-global using SunamoStringJoin._sunamo;
 global using SunamoLogger;
 global using SunamoStringReplace;
