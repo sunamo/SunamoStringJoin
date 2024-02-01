@@ -88,17 +88,17 @@ public class SHJoin
     //{
     //    if (parts.Length == 0)
     //    {
-    //        ThrowEx.Custom("Not passed any parts, only delimiter: " + delimiter);
+    //        throw new Exception("Not passed any parts, only delimiter: " + delimiter);
     //    }
 
-    //    var enu = /*CA.ToEnumerable*/ CA.ToListString(parts);
+    //    var enu = /*CA.ToEnumerable*/ new List<string>(parts);
     //    if (delimiter is IList enumerable && delimiter.GetType() != Types.tString)
     //    {
     //        IList ie = enumerable;
 
     //        if (ie.Count() > 1 && enu.Count() == 1)
     //        {
-    //            ThrowEx.Custom(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
+    //            throw new Exception(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
     //        }
     //    }
 
@@ -184,7 +184,7 @@ public class SHJoin
         //if (parts.Length == 0)
         //{
         //    // házelo mi to chybu, takže vrátím prostě SE
-        //    //ThrowEx.Custom("Not passed any parts, only delimiter: " + delimiter);
+        //    //throw new Exception("Not passed any parts, only delimiter: " + delimiter);
         //    return Consts.se;
         //}
 
@@ -195,7 +195,7 @@ public class SHJoin
 
         //    if (ie.Count > 1 && enu.Count == 1)
         //    {
-        //        ThrowEx.Custom(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
+        //        throw new Exception(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
         //    }
         //}
 
@@ -215,14 +215,14 @@ public class SHJoin
     /// <param name="parts"></param>
     public static string JoinArray(object delimiter, params string[] enu)
     {
-        //IList enu = CA.ToListStringIEnumerable2(parts);
+        //IList enu = new List<string>IEnumerable2(parts);
         if (delimiter is IList /*enumerable*/ && delimiter.GetType() != Types.tString)
         {
             IList ie = enu/*merable*/;
 
             if (ie.Count > 1 && enu.Length == 1)
             {
-                ThrowEx.Custom(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
+                throw new Exception(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
             }
         }
 
@@ -321,13 +321,14 @@ public class SHJoin
     {
         return null;
         // TODO: Delete after all app working, has here method Join with same arguments
-        //return SHJoin.Join(delimiter, CA.ToListStringIEnumerable2(parts));
+        //return SHJoin.Join(delimiter, new List<string>IEnumerable2(parts));
     }
 
 
     public static bool IsNumber(string input, string value, bool invert)
     {
-        input = SHReplace.ReplaceAll(input, "", AllLists.numberPoints.ToArray());
+        input = input.Replace(",", "");
+        input = input.Replace(".", "");
         long l = 0;
         return BTS.Invert(long.TryParse(input, out l), invert);
     }
@@ -340,7 +341,7 @@ public class SHJoin
     /// <param name="parts"></param>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = CASH.WrapWithIfFunc(IsNumber, true, AllStringsSE.space, AllStringsSE.qm, parts).ToArray();
+        parts = SunamoStringJoin._sunamo.CASH.WrapWithIfFunc(IsNumber, true, AllStringsSE.space, AllStringsSE.qm, parts).ToArray();
         return SHJoin.Join(delimiter, parts);
     }
     public static string JoinStringExceptIndexes(object delimiter, IList parts, params int[] v2)

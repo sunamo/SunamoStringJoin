@@ -1,5 +1,7 @@
+namespace SunamoStringJoin._sunamo;
+
 //namespace SunamoStringJoin._sunamo;
-//public class CA
+//internal class CA
 //{
-//    public static Func<Func<string, string, bool, bool>, bool, string, string, string[], string[]> WrapWithIfFunc;
+//    internal static Func<Func<string, string, bool, bool>, bool, string, string, string[], string[]> WrapWithIfFunc;
 //}

@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>24.1.24.1</Version>
+    <Version>24.2.1.2</Version>
     <Description>Joining more string into one in various formats</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -13,10 +13,7 @@
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoAttributes" Version="24.1.24.1" />
-    <PackageReference Include="SunamoBts" Version="24.1.24.1" />
-    <PackageReference Include="SunamoCollectionsShared" Version="24.1.23.2" />
-    <PackageReference Include="SunamoLogger" Version="24.1.14.1" />
-    <PackageReference Include="SunamoStringReplace" Version="24.1.23.1" />
+    <PackageReference Include="SunamoAttributes" Version="24.2.1.1" />
+    <PackageReference Include="SunamoLogger" Version="24.2.1.1" />
   </ItemGroup>
 </Project>

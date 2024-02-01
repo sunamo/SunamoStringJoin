@@ -1,11 +1,13 @@
 global using System.Collections.Generic;
+global using System;
 global using System.Linq;
 global using System.Text;
-global using System;
 global using System.Collections;
 global using SunamoExceptions.OnlyInSE;
-global using SunamoAttributes;
+global using SunamoValues;
+global using SunamoValues.Values;
 global using SunamoExceptions;
+global using SunamoAttributes;
 global using SunamoBts;
-global using SunamoLogger;
-global using SunamoStringReplace;
+global using SunamoI18N;
+global using SunamoI18N.Values;
