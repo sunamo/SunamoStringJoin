@@ -255,7 +255,7 @@ public class SHJoin
 
     public static string JoinComma(params string[] args)
     {
-        return SHJoin.Join(AllStringsSE.comma, args);
+        return SHJoin.Join(AllStrings.comma, args);
     }
 
     public static string JoinDictionary(IDictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
@@ -344,7 +344,7 @@ public class SHJoin
     /// <param name="parts"></param>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = SunamoStringJoin._sunamo.CASH.WrapWithIfFunc(IsNumber, true, AllStringsSE.space, AllStringsSE.qm, parts).ToArray();
+        parts = SunamoStringJoin._sunamo.CASH.WrapWithIfFunc(IsNumber, true, AllStrings.space, AllStrings.qm, parts).ToArray();
         return SHJoin.Join(delimiter, parts);
     }
     public static string JoinStringExceptIndexes(object delimiter, IList parts, params int[] v2)
