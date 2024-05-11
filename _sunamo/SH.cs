@@ -1,4 +1,4 @@
-namespace SunamoStringJoin._sunamo;
+namespace SunamoStringJoin;
 
 //namespace SunamoStringJoin._sunamo;
 //internal class SH

@@ -1,4 +1,4 @@
-﻿namespace SunamoStringJoin._sunamo;
+namespace SunamoStringJoin;
 internal class BTS
 {
     internal static bool Invert(bool b, bool really)
