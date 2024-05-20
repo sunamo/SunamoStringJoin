@@ -29,7 +29,7 @@ public class SHJoin
     /// </summary>
     /// <param name="delimiter"></param>
     /// <param name="parts"></param>
-    [ObjectObsolete]
+    //[ObjectObsolete]
     public static string JoinString(string delimiter, List<string> parts)
     {
         // TODO: Delete after all app working, has here method Join with same arguments
@@ -181,7 +181,7 @@ public class SHJoin
     /// </summary>
     /// <param name="delimiter"></param>
     /// <param name="parts"></param>
-    [ObjectParamsObsolete]
+    ////[ObjectParamsObsolete]
     public static string Join(object delimiter, params string[] parts)
     {
         //if (parts.Length == 0)
@@ -319,7 +319,7 @@ public class SHJoin
     * Join
     * JoinString
     */
-    [ObjectParamsObsolete]
+    ////[ObjectParamsObsolete]
     public static string JoinStringParams(object delimiter, params string[] parts)
     {
         return null;
@@ -344,7 +344,7 @@ public class SHJoin
     /// <param name="parts"></param>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = SunamoStringJoin._sunamo.CASH.WrapWithIfFunc(IsNumber, true, AllStrings.space, AllStrings.qm, parts).ToArray();
+        parts = CASH.WrapWithIfFunc(IsNumber, true, AllStrings.space, AllStrings.qm, parts).ToArray();
         return SHJoin.Join(delimiter, parts);
     }
     public static string JoinStringExceptIndexes(object delimiter, IList parts, params int[] v2)
@@ -403,7 +403,7 @@ public class SHJoin
     /// <returns></returns>
     public static string JoinNL(List<string> parts, bool removeLastNl = false)
     {
-        string nl = Consts.nl;
+        string nl = "\n";
         string result = JoinString(nl, parts);
         if (removeLastNl)
         {

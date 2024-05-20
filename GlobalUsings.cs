@@ -6,7 +6,7 @@ global using System.Collections;
 
 
 
-
+global using SunamoStringJoin._sunamo;
 global using System.Collections.Generic;
 global using System.Collections;
 global using System.IO;
