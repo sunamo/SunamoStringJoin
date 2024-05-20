@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunamoStringJoin._sunamo;
+namespace SunamoStringJoin;
 internal class SHSE
 {
     internal static string TrimEnd(string v, string delimAfter)
