@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace SunamoStringJoin;
 internal class SHSE
 {
-    internal static string TrimEnd(string v, string delimAfter)
+    public static string TrimEnd(string name, string ext)
     {
-        throw new NotImplementedException();
+        while (name.EndsWith(ext)) return name.Substring(0, name.Length - ext.Length);
+
+        return name;
     }
 }
