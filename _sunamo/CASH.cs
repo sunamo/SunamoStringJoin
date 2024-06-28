@@ -1,8 +1,8 @@
 namespace SunamoStringJoin;
 
-public class CASH
+internal class CASH
 {
-    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
+    internal static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
     {
         for (int i = 0; i < whereIsUsed2.Length; i++)
         {

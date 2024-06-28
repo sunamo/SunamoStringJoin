@@ -1,7 +1,7 @@
 namespace SunamoStringJoin;
-public class sess
+internal class sess
 {
-    public static string? i18n(string probablyWasCalledWithSwithechDelimiterAndParts)
+    internal static string? i18n(string probablyWasCalledWithSwithechDelimiterAndParts)
     {
         return probablyWasCalledWithSwithechDelimiterAndParts;
     }
