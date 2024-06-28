@@ -1,3 +1,5 @@
+
+namespace SunamoStringJoin;
 using System.Diagnostics;
 using System.Text;
 
