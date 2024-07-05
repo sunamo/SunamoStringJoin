@@ -1,6 +1,3 @@
-
-
-
 namespace SunamoStringJoin;
 
 public class SHJoin

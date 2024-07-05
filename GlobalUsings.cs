@@ -18,3 +18,6 @@ global using SunamoStringJoin._sunamo.SunamoXlfKeys;
 global using SunamoStringJoin._sunamo.SunamoExceptions.OnlyInSE;
 global using SunamoStringJoin._sunamo.SunamoExceptions._AddedToAllCsproj;
 global using SunamoStringJoin._sunamo.SunamoLang.SunamoI18N;
+global using System.Diagnostics;
+global using System.Net;
+global using System.Threading.Tasks;
