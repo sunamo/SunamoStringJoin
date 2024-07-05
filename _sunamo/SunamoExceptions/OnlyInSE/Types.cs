@@ -1,4 +1,4 @@
-namespace SunamoStringJoin;
+namespace SunamoStringJoin._sunamo.SunamoExceptions.OnlyInSE;
 
 using System.Collections;
 using System.Text;
