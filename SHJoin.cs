@@ -284,7 +284,7 @@ public class SHJoin
             sb.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
         }
 
-        return SHSE.TrimEnd(sb.ToString(), delimAfter);
+        return SH.TrimEnd(sb.ToString(), delimAfter);
     }
 
     //public static string JoinStringParams(string name, params string[] labels) { return null; }
@@ -341,7 +341,7 @@ public class SHJoin
     /// <param name="parts"></param>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = CASH.WrapWithIfFunc(IsNumber, true, AllStrings.space, AllStrings.qm, parts).ToArray();
+        parts = CA.WrapWithIfFunc(IsNumber, true, AllStrings.space, AllStrings.qm, parts).ToArray();
         return SHJoin.Join(delimiter, parts);
     }
     public static string JoinStringExceptIndexes(object delimiter, IList parts, params int[] v2)
@@ -404,7 +404,7 @@ public class SHJoin
         string result = JoinString(nl, parts);
         if (removeLastNl)
         {
-            result = SHSE.TrimEnd(result, nl);
+            result = SH.TrimEnd(result, nl);
         }
 
         return result;
@@ -505,7 +505,7 @@ public class SHJoin
 
         if (!addAfterLast)
         {
-            result = SHSE.TrimEnd(result, AllStrings.dotSpace);
+            result = SH.TrimEnd(result, AllStrings.dotSpace);
         }
         return result;
     }

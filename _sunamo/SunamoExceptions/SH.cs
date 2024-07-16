@@ -1,5 +1,6 @@
 namespace SunamoStringJoin._sunamo.SunamoExceptions;
-internal class SHSE
+
+internal class SH
 {
     internal static string TrimEnd(string name, string ext)
     {
