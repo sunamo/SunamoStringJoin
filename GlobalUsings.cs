@@ -13,3 +13,5 @@ global using SunamoStringJoin._sunamo.SunamoExceptions.OnlyInSE;
 global using SunamoStringJoin._sunamo.SunamoLang.SunamoI18N;
 global using System.Diagnostics;
 global using System.Net;
+global using SunamoStringJoin._sunamo;
+global using SunamoStringJoin._sunamo.SunamoExceptions;

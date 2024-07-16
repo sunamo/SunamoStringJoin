@@ -1,5 +1,3 @@
-using SunamoStringJoin._sunamo;
-
 namespace SunamoStringJoin;
 
 public class SHJoin
