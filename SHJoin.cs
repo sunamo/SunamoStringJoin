@@ -230,7 +230,7 @@ public class SHJoin
         return SHJoin.Join(delimiter.ToString(), enu);
     }
 
-    public static string JoinNL(StringBuilder sb, List<string> l)
+    public static string JoinNLSb(StringBuilder sb, List<string> l)
     {
         sb.Clear();
         foreach (var item in l)
@@ -470,7 +470,8 @@ public class SHJoin
         return sb.ToString();
     }
 
-    public static string JoinNL(params string[] parts)
+    [Obsolete("Toto bych neměl, všude se má předává List")]
+    private static string JoinNL(params string[] parts)
     {
         return SHJoin.JoinString(Environment.NewLine, parts.ToList());
     }

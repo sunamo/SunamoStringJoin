@@ -15,3 +15,5 @@ global using System.Diagnostics;
 global using System.Net;
 global using SunamoStringJoin._sunamo;
 global using SunamoStringJoin._sunamo.SunamoExceptions;
+global using SunamoStringJoin;
+global using SunamoStringJoin._sunamo.SunamoStringGetLines;
