@@ -17,23 +17,24 @@ internal class SH
         r = sb.ToString();
         return r;
     }
+
     internal static List<string> SplitCharMore(string s, params char[] dot)
     {
         return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
+
     internal static List<string> SplitMore(string s, params string[] dot)
     {
         return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
+
     internal static List<string> SplitNone(string text, params string[] deli)
     {
         return text.Split(deli, StringSplitOptions.None).ToList();
     }
+
     internal static string NullToStringOrDefault(object n)
     {
-
         return n == null ? " " + Consts.nulled : AllStrings.space + n;
     }
-
-
 }
