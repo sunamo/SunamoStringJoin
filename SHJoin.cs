@@ -1,5 +1,4 @@
 namespace SunamoStringJoin;
-
 public class SHJoin
 {
     private static Type type = typeof(SHJoin);
@@ -32,7 +31,7 @@ public class SHJoin
 
     ////
     ///// <summary>
-    /////     Usage: Exc.TypeAndMethodName
+    /////     Usage: Exceptions.TypeAndMethodName
     /////     Remove with A2
     ///// </summary>
     ///// <param name="t"></param>
@@ -55,7 +54,7 @@ public class SHJoin
     //}
 
     ///// <summary>
-    /////     Usage: Exc.TypeAndMethodName
+    /////     Usage: Exceptions.TypeAndMethodName
     ///// </summary>
     ///// <param name="v"></param>
     ///// <param name="s"></param>
@@ -71,7 +70,7 @@ public class SHJoin
     //}
 
     /// <summary>
-    ///     Usage: Exc.TypeAndMethodName
+    ///     Usage: Exceptions.TypeAndMethodName
     /// </summary>
     /// <param name="dot"></param>
     /// <param name="p"></param>
@@ -128,7 +127,7 @@ public class SHJoin
     public static string JoinArray(object delimiter, params string[] enu)
     {
         //IList enu = new List<string>IEnumerable2(parts);
-        if (delimiter is IList /*enumerable*/ && delimiter.GetType() != Types.tString)
+        if (delimiter is IList /*enumerable*/ && delimiter.GetType() != typeof(string))
         {
             IList ie = enu /*merable*/;
 
@@ -439,7 +438,7 @@ public class SHJoin
     //}
 
     //    /// <summary>
-    /////     Usage: Exc.TypeAndMethodName
+    /////     Usage: Exceptions.TypeAndMethodName
     ///// </summary>
     ///// <param name="dot"></param>
     ///// <param name="p"></param>
