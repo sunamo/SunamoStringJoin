@@ -96,7 +96,7 @@ public class SHJoin
         //{
         //    // házelo mi to chybu, takže vrátím prostě SE
         //    //throw new Exception("Not passed any parts, only delimiter: " + delimiter);
-        //    return Consts.se;
+        //    return "";
         //}
 
         //IList enu = parts.ToList();
@@ -155,7 +155,7 @@ public class SHJoin
 
     public static string JoinComma(params string[] args)
     {
-        return Join(AllStrings.comma, args);
+        return Join(",", args);
     }
 
     public static string JoinDictionary(IDictionary<string, string> dict, string delimiterBetweenKeyAndValue,
@@ -239,7 +239,7 @@ public class SHJoin
     /// <param name="parts"></param>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = CA.WrapWithIfFunc(IsNumber, true, AllStrings.space, AllStrings.qm, parts).ToArray();
+        parts = CA.WrapWithIfFunc(IsNumber, true, "", "\"", parts).ToArray();
         return Join(delimiter, parts);
     }
 
@@ -343,7 +343,7 @@ public class SHJoin
 
     public static string JoinSpace(List<string> parts)
     {
-        return JoinString(AllStrings.space, parts);
+        return JoinString("", parts);
     }
 
     public static string JoinTimes(int times, string dds)
@@ -377,13 +377,13 @@ public class SHJoin
             if (!string.IsNullOrEmpty(item))
             {
                 sb.Append(item);
-                if (!item.EndsWith(AllStrings.dotSpace)) sb.Append(AllStrings.dotSpace);
+                if (!item.EndsWith(".")) sb.Append(".");
             }
         }
 
         var result = sb.ToString();
 
-        if (!addAfterLast) result = SH.TrimEnd(result, AllStrings.dotSpace);
+        if (!addAfterLast) result = SH.TrimEnd(result, ".");
         return result;
     }
 
