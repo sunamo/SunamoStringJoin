@@ -343,7 +343,7 @@ public class SHJoin
 
     public static string JoinSpace(List<string> parts)
     {
-        return JoinString("", parts);
+        return JoinString(" ", parts);
     }
 
     public static string JoinTimes(int times, string dds)
