@@ -106,7 +106,7 @@ public class SHJoin
 
         //    if (ie.Count > 1 && enu.Count == 1)
         //    {
-        //        throw new Exception(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
+        //        throw new Exception(Translate.FromKey(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
         //    }
         //}
 
@@ -132,7 +132,7 @@ public class SHJoin
             IList ie = enu /*merable*/;
 
             if (ie.Count > 1 && enu.Length == 1)
-                throw new Exception(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
+                throw new Exception(Translate.FromKey(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
         }
 
         // JoinString point to Join with implementation
@@ -468,7 +468,7 @@ public class SHJoin
 
     //        if (ie.Count() > 1 && enu.Count() == 1)
     //        {
-    //            throw new Exception(sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
+    //            throw new Exception(Translate.FromKey(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
     //        }
     //    }
 
