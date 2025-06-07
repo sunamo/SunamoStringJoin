@@ -92,6 +92,8 @@ public class SHJoin
     ////[ObjectParamsObsolete]
     public static string Join(object delimiter, params string[] parts)
     {
+        return string.Join(delimiter.ToString(), parts);
+
         //if (parts.Length == 0)
         //{
         //    // házelo mi to chybu, takže vrátím prostě SE
@@ -112,8 +114,6 @@ public class SHJoin
 
         //// JoinString point to Join with implementation
         //return JoinString(delimiter.ToString(), enu);
-
-        return null;
     }
 
 
@@ -217,9 +217,8 @@ public class SHJoin
     ////[ObjectParamsObsolete]
     public static string JoinStringParams(object delimiter, params string[] parts)
     {
-        return null;
         // TODO: Delete after all app working, has here method Join with same arguments
-        //return SHJoin.Join(delimiter, new List<string>IEnumerable2(parts));
+        return SHJoin.Join(delimiter, (parts));
     }
 
 
