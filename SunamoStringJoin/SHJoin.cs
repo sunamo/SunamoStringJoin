@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoStringJoin;
 public class SHJoin
 {
@@ -36,10 +39,10 @@ public class SHJoin
     ///// </summary>
     ///// <param name="t"></param>
     ///// <param name="ch"></param>
-    //public static string RemoveAfterFirst(string t, char ch)
+    //public static string RemoveAfterFirst(string temp, char ch)
     //{
-    //    int dex = t.IndexOf(ch);
-    //    return dex == -1 || dex == t.Length - 1 ? t : t.Substring(0, dex);
+    //    int dex = temp.IndexOf(ch);
+    //    return dex == -1 || dex == temp.Length - 1 ? temp : temp.Substring(0, dex);
     //}
 
     ///// <summary>
@@ -59,11 +62,11 @@ public class SHJoin
     ///// <param name="v"></param>
     ///// <param name="s"></param>
     ///// <returns></returns>
-    //public static string TrimStart(string v, string s)
+    //public static string TrimStart(string v, string text)
     //{
-    //    while (v.StartsWith(s))
+    //    while (v.StartsWith(text))
     //    {
-    //        v = v.Substring(s.Length);
+    //        v = v.Substring(text.Length);
     //    }
 
     //    return v;
@@ -139,18 +142,18 @@ public class SHJoin
         return Join(delimiter.ToString(), enu);
     }
 
-    public static string JoinNLSb(StringBuilder sb, List<string> l)
+    public static string JoinNLSb(StringBuilder stringBuilder, List<string> list)
     {
-        sb.Clear();
-        foreach (var item in l) sb.AppendLine(item);
-        return sb.ToString();
+        stringBuilder.Clear();
+        foreach (var item in list) stringBuilder.AppendLine(item);
+        return stringBuilder.ToString();
     }
 
     public static string JoinChars(params char[] ch)
     {
-        var sb = new StringBuilder();
-        foreach (var item in ch) sb.Append(item);
-        return sb.ToString();
+        var stringBuilder = new StringBuilder();
+        foreach (var item in ch) stringBuilder.Append(item);
+        return stringBuilder.ToString();
     }
 
     public static string JoinComma(params string[] args)
@@ -167,22 +170,22 @@ public class SHJoin
 
     public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
     {
-        var sb = new StringBuilder();
-        foreach (var item in dictionary) sb.AppendLine(item.Key + delimiter + item.Value);
-        return sb.ToString();
+        var stringBuilder = new StringBuilder();
+        foreach (var item in dictionary) stringBuilder.AppendLine(item.Key + delimiter + item.Value);
+        return stringBuilder.ToString();
     }
 
     public static string JoinKeyValueCollection(IList v1, IList v2, string delimiterBetweenKeyAndValue,
         string delimAfter)
     {
-        var sb = new StringBuilder();
+        var stringBuilder = new StringBuilder();
         var v2List = new List<object>(v2.Count);
         foreach (var item in v2) v2List.Add(item);
 
         var i = 0;
-        foreach (var item in v1) sb.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
+        foreach (var item in v1) stringBuilder.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
 
-        return SH.TrimEnd(sb.ToString(), delimAfter);
+        return SH.TrimEnd(stringBuilder.ToString(), delimAfter);
     }
 
     //public static string JoinStringParams(string name, params string[] labels) { return null; }
@@ -226,8 +229,8 @@ public class SHJoin
     {
         input = input.Replace(",", "");
         input = input.Replace(".", "");
-        long l = 0;
-        return BTS.Invert(long.TryParse(input, out l), invert);
+        long list = 0;
+        return BTS.Invert(long.TryParse(input, out list), invert);
     }
 
     // refaktorovat to tady, nemuzu zavolat params z IEnum . Teprve ve working method zkontroluji co je za typ a pripadne pretypuji
@@ -244,22 +247,22 @@ public class SHJoin
 
     public static string JoinStringExceptIndexes(object delimiter, IList parts, params int[] v2)
     {
-        var s = delimiter.ToString();
-        var sb = new StringBuilder();
+        var text = delimiter.ToString();
+        var stringBuilder = new StringBuilder();
         var i = -1;
         foreach (string item in parts)
         {
             i++;
-            if (v2.Any(d => d == i)) continue;
-            sb.Append(item + s);
+            if (v2.Any(data => data == i)) continue;
+            stringBuilder.Append(item + text);
         }
 
-        var d = sb.ToString();
-        //return d.Remove(d.Length - (name.Length - 1), name.Length);
-        var to = d.Length - s.Length;
-        if (to > 0) return d.Substring(0, to);
-        return d;
-        //return d;
+        var data = stringBuilder.ToString();
+        //return data.Remove(data.Length - (name.Length - 1), name.Length);
+        var to = data.Length - text.Length;
+        if (to > 0) return data.Substring(0, to);
+        return data;
+        //return data;
     }
 
     /// <summary>
@@ -271,15 +274,15 @@ public class SHJoin
     public static string JoinFromIndex(int dex, object delimiter2, IList parts)
     {
         var delimiter = delimiter2.ToString();
-        var sb = new StringBuilder();
+        var stringBuilder = new StringBuilder();
         var i = 0;
         foreach (var item in parts)
         {
-            if (i >= dex) sb.Append(item + delimiter);
+            if (i >= dex) stringBuilder.Append(item + delimiter);
             i++;
         }
 
-        var vr = sb.ToString();
+        var vr = stringBuilder.ToString();
         return vr.Substring(0, vr.Length - 1);
         //return SHSubstring.SubstringLength(vr, 0, vr.Length - 1);
     }
@@ -322,15 +325,15 @@ public class SHJoin
     public static string JoinToIndex(int dex, object delimiter2, IList parts)
     {
         var delimiter = delimiter2.ToString();
-        var sb = new StringBuilder();
+        var stringBuilder = new StringBuilder();
         var i = 0;
         foreach (var item in parts)
         {
-            if (i < dex) sb.Append(item + delimiter);
+            if (i < dex) stringBuilder.Append(item + delimiter);
             i++;
         }
 
-        var vr = sb.ToString();
+        var vr = stringBuilder.ToString();
         return vr.Substring(0, vr.Length - 1);
     }
 
@@ -349,9 +352,9 @@ public class SHJoin
     {
         // Working just for char
         //return new String(dds, times);
-        var sb = new StringBuilder();
-        for (var i = 0; i < times; i++) sb.Append(dds);
-        return sb.ToString();
+        var stringBuilder = new StringBuilder();
+        for (var i = 0; i < times; i++) stringBuilder.Append(dds);
+        return stringBuilder.ToString();
     }
 
     [Obsolete("Toto bych neměl, všude se má předává List")]
@@ -362,25 +365,25 @@ public class SHJoin
 
     public static string JoinWithoutTrim(object p, IList parts)
     {
-        var sb = new StringBuilder();
-        foreach (var item in parts) sb.Append(item.ToString() + p);
-        return sb.ToString();
+        var stringBuilder = new StringBuilder();
+        foreach (var item in parts) stringBuilder.Append(item.ToString() + p);
+        return stringBuilder.ToString();
     }
 
     public static string JoinSentences(bool addAfterLast, params string[] pDescription)
     {
-        var sb = new StringBuilder();
+        var stringBuilder = new StringBuilder();
         foreach (var item in pDescription)
         {
-            var t = item.Trim();
+            var temp = item.Trim();
             if (!string.IsNullOrEmpty(item))
             {
-                sb.Append(item);
-                if (!item.EndsWith(".")) sb.Append(".");
+                stringBuilder.Append(item);
+                if (!item.EndsWith(".")) stringBuilder.Append(".");
             }
         }
 
-        var result = sb.ToString();
+        var result = stringBuilder.ToString();
 
         if (!addAfterLast) result = SH.TrimEnd(result, ".");
         return result;
@@ -411,11 +414,11 @@ public class SHJoin
     ///// <param name="parts"></param>
     //public static string Join(object delimiter, IList parts)
     //{
-    //    string s = delimiter.ToString();
-    //    StringBuilder sb = new StringBuilder();
+    //    string text = delimiter.ToString();
+    //    StringBuilder stringBuilder = new StringBuilder();
     //    if (parts.Count() == 1 && parts.FirstOrNull().GetType() == Types.tString)
     //    {
-    //        sb.Append(ListToString(parts.FirstOrNull()) + s);
+    //        stringBuilder.Append(ListToString(parts.FirstOrNull()) + text);
     //    }
     //    else if (parts.GetType() == Types.tString)
     //    {
@@ -425,15 +428,15 @@ public class SHJoin
     //    {
     //        foreach (object item in parts)
     //        {
-    //            sb.Append(ListToString(item) + s);
+    //            stringBuilder.Append(ListToString(item) + text);
     //        }
     //    }
 
-    //    string d = sb.ToString();
-    //    //return d.Remove(d.Length - (name.Length - 1), name.Length);
-    //    int to = d.Length - s.Length;
-    //    return to > 0 ? d.Substring(0, to) : d;
-    //    //return d;
+    //    string data = stringBuilder.ToString();
+    //    //return data.Remove(data.Length - (name.Length - 1), name.Length);
+    //    int to = data.Length - text.Length;
+    //    return to > 0 ? data.Substring(0, to) : data;
+    //    //return data;
     //}
 
     //    /// <summary>
