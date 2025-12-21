@@ -1,6 +1,7 @@
+namespace SunamoStringJoin._sunamo;
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoStringJoin._sunamo;
 internal class SH
 {
     internal static string TrimEnd(string name, string ext)
