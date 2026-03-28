@@ -1,12 +1,18 @@
 namespace SunamoStringJoin._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// String helper utilities.
+/// </summary>
 internal class SH
 {
-    internal static string TrimEnd(string name, string ext)
+    /// <summary>
+    /// Removes the specified suffix from the end of a string.
+    /// </summary>
+    /// <param name="text">The text to trim.</param>
+    /// <param name="suffix">The suffix to remove.</param>
+    internal static string TrimEnd(string text, string suffix)
     {
-        while (name.EndsWith(ext)) return name.Substring(0, name.Length - ext.Length);
-        return name;
+        while (text.EndsWith(suffix)) return text.Substring(0, text.Length - suffix.Length);
+        return text;
     }
 }

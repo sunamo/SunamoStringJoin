@@ -1,134 +1,141 @@
 namespace SunamoStringJoin;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class SHJoin
 {
     /// <summary>
-    ///     Ořeže poslední znak - delimiter
+    /// Joins list elements from a specified start index with a delimiter, trimming the last delimiter character.
     /// </summary>
-    /// <param name = "dex"></param>
-    /// <param name = "delimiter2"></param>
-    /// <param name = "parts"></param>
-    public static string JoinFromIndex(int dex, object delimiter2, IList parts)
+    /// <param name="startIndex">The index to start joining from.</param>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="list">The list of parts to join.</param>
+    public static string JoinFromIndex(int startIndex, object delimiter, IList list)
     {
-        var delimiter = delimiter2.ToString();
+        var delimiterText = delimiter.ToString() ?? string.Empty;
         var stringBuilder = new StringBuilder();
-        var i = 0;
-        foreach (var item in parts)
+        var index = 0;
+        foreach (var item in list)
         {
-            if (i >= dex)
-                stringBuilder.Append(item + delimiter);
-            i++;
+            if (index >= startIndex)
+                stringBuilder.Append(item + delimiterText);
+            index++;
         }
 
-        var vr = stringBuilder.ToString();
-        return vr.Substring(0, vr.Length - 1);
-    //return SHSubstring.SubstringLength(vr, 0, vr.Length - 1);
+        var result = stringBuilder.ToString();
+        return result.Substring(0, result.Length - 1);
     }
 
     /// <summary>
-    ///     Usage: Exceptions.MoreCandidates
+    /// Joins a list of strings with newline characters.
     /// </summary>
-    /// <param name = "parts"></param>
-    /// <param name = "removeLastNl"></param>
-    /// <returns></returns>
-    public static string JoinNL(List<string> parts, bool removeLastNl = false)
+    /// <param name="list">The list of strings to join.</param>
+    /// <param name="isRemovingLastNewline">Whether to remove the trailing newline.</param>
+    /// <returns>The joined string.</returns>
+    public static string JoinNL(List<string> list, bool isRemovingLastNewline = false)
     {
-        var nl = "\n";
-        var result = JoinString(nl, parts);
-        if (removeLastNl)
-            result = SH.TrimEnd(result, nl);
+        var newline = "\n";
+        var result = JoinString(newline, list);
+        if (isRemovingLastNewline)
+            result = SH.TrimEnd(result, newline);
         return result;
     }
 
     /// <summary>
-    ///     Usage: Exceptions.MoreCandidates
-    ///     Will be delete after final refactoring
-    ///     Automaticky o�e�e posledn� A1
+    /// Joins a list of strings with a delimiter. Wrapper for <see cref="Join(string, List{string})"/>.
     /// </summary>
-    /// ;
-    /// <param name = "delimiter"></param>
-    /// <param name = "parts"></param>
-    public static string JoinString(object delimiter, List<string> parts)
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="list">The list of strings to join.</param>
+    public static string JoinString(object delimiter, List<string> list)
     {
-        // TODO: Delete after all app working, has here method Join with same arguments
-        return Join(delimiter.ToString(), parts);
+        return Join(delimiter.ToString() ?? string.Empty, list);
     }
 
     /// <summary>
-    ///     A1 won't be included
+    /// Joins list elements up to a specified end index (exclusive) with a delimiter.
     /// </summary>
-    /// <param name = "dex"></param>
-    /// <param name = "delimiter"></param>
-    /// <param name = "parts"></param>
-    public static string JoinToIndex(int dex, object delimiter2, IList parts)
+    /// <param name="endIndex">The exclusive end index.</param>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="list">The list of parts to join.</param>
+    public static string JoinToIndex(int endIndex, object delimiter, IList list)
     {
-        var delimiter = delimiter2.ToString();
+        var delimiterText = delimiter.ToString() ?? string.Empty;
         var stringBuilder = new StringBuilder();
-        var i = 0;
-        foreach (var item in parts)
+        var index = 0;
+        foreach (var item in list)
         {
-            if (i < dex)
-                stringBuilder.Append(item + delimiter);
-            i++;
+            if (index < endIndex)
+                stringBuilder.Append(item + delimiterText);
+            index++;
         }
 
-        var vr = stringBuilder.ToString();
-        return vr.Substring(0, vr.Length - 1);
+        var result = stringBuilder.ToString();
+        return result.Substring(0, result.Length - 1);
     }
 
-    public static string JoinWithoutEndTrimDelimiter(object name, params string[] parts)
+    /// <summary>
+    /// Joins string parts with a delimiter without trimming the end delimiter.
+    /// </summary>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="array">The string parts to join.</param>
+    public static string JoinWithoutEndTrimDelimiter(object delimiter, params string[] array)
     {
-        // TODO: Delete after making all solutions working
-        return JoinWithoutTrim(name, parts);
+        return JoinWithoutTrim(delimiter, array);
     }
 
-    public static string JoinSpace(List<string> parts)
+    /// <summary>
+    /// Joins a list of strings with a space delimiter.
+    /// </summary>
+    /// <param name="list">The list of strings to join.</param>
+    public static string JoinSpace(List<string> list)
     {
-        return JoinString(" ", parts);
+        return JoinString(" ", list);
     }
 
-    public static string JoinTimes(int times, string dds)
+    /// <summary>
+    /// Repeats a text a specified number of times.
+    /// </summary>
+    /// <param name="times">The number of repetitions.</param>
+    /// <param name="text">The text to repeat.</param>
+    public static string JoinTimes(int times, string text)
     {
-        // Working just for char
-        //return new String(dds, times);
         var stringBuilder = new StringBuilder();
         for (var i = 0; i < times; i++)
-            stringBuilder.Append(dds);
+            stringBuilder.Append(text);
         return stringBuilder.ToString();
     }
 
-    [Obsolete("Toto bych neměl, všude se má předává List")]
-    private static string JoinNL(params string[] parts)
-    {
-        return JoinString(Environment.NewLine, parts.ToList());
-    }
-
-    public static string JoinWithoutTrim(object p, IList parts)
+    /// <summary>
+    /// Joins list elements with a delimiter without trimming the end.
+    /// </summary>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="list">The list of parts to join.</param>
+    public static string JoinWithoutTrim(object delimiter, IList list)
     {
         var stringBuilder = new StringBuilder();
-        foreach (var item in parts)
-            stringBuilder.Append(item.ToString() + p);
+        foreach (var item in list)
+            stringBuilder.Append(item.ToString() + delimiter);
         return stringBuilder.ToString();
     }
 
-    public static string JoinSentences(bool addAfterLast, params string[] pDescription)
+    /// <summary>
+    /// Joins sentences, ensuring each ends with a period.
+    /// </summary>
+    /// <param name="isAddingAfterLast">Whether to keep the period after the last sentence.</param>
+    /// <param name="array">The sentences to join.</param>
+    public static string JoinSentences(bool isAddingAfterLast, params string[] array)
     {
         var stringBuilder = new StringBuilder();
-        foreach (var item in pDescription)
+        foreach (var item in array)
         {
-            var temp = item.Trim();
             if (!string.IsNullOrEmpty(item))
             {
                 stringBuilder.Append(item);
-                if (!item.EndsWith("."))
-                    stringBuilder.Append(".");
+                if (!item.EndsWith('.'))
+                    stringBuilder.Append('.');
             }
         }
 
         var result = stringBuilder.ToString();
-        if (!addAfterLast)
+        if (!isAddingAfterLast)
             result = SH.TrimEnd(result, ".");
         return result;
     }

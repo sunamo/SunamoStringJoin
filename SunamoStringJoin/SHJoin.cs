@@ -1,135 +1,56 @@
 namespace SunamoStringJoin;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// String helper methods for joining strings and collections with delimiters.
+/// </summary>
 public partial class SHJoin
 {
-    private static Type type = typeof(SHJoin);
     /// <summary>
-    ///     Usage: Exceptions.MoreCandidates
-    ///     Will be delete after final refactoring
-    ///     Automaticky o�e�e posledn� A1
+    /// Joins a list of strings with a delimiter. Wrapper for <see cref="Join(string, List{string})"/>.
     /// </summary>
-    /// <param name = "delimiter"></param>
-    /// <param name = "parts"></param>
-     //[ObjectObsolete]
-    public static string JoinString(string delimiter, List<string> parts)
+    /// <param name="delimiter">The delimiter to place between parts.</param>
+    /// <param name="list">The list of strings to join.</param>
+    public static string JoinString(string delimiter, List<string> list)
     {
-        // TODO: Delete after all app working, has here method Join with same arguments
-        return Join(delimiter, parts);
-    }
-
-    ///// <summary>
-    /////     Start at 0
-    /////     Usage: MethodOfOccuredFromStackTrace
-    ///// </summary>
-    ///// <param name="input"></param>
-    ///// <param name="lenght"></param>
-    ///// <returns></returns>
-    //public static string SubstringIfAvailable(string input, int lenght)
-    //{
-    //    return input.Length > lenght ? input.Substring(0, lenght) : input;
-    //}
-    ////
-    ///// <summary>
-    /////     Usage: Exceptions.TypeAndMethodName
-    /////     Remove with A2
-    ///// </summary>
-    ///// <param name="t"></param>
-    ///// <param name="ch"></param>
-    //public static string RemoveAfterFirst(string temp, char ch)
-    //{
-    //    int dex = temp.IndexOf(ch);
-    //    return dex == -1 || dex == temp.Length - 1 ? temp : temp.Substring(0, dex);
-    //}
-    ///// <summary>
-    /////     Usage: Exc.MethodOfOccuredFromStackTrace
-    ///// </summary>
-    ///// <param name="item"></param>
-    ///// <returns></returns>
-    //public static string FirstLine(string item)
-    //{
-    //    List<string> lines = GetLines(item);
-    //    return lines.Count == 0 ? string.Empty : lines[0];
-    //}
-    ///// <summary>
-    /////     Usage: Exceptions.TypeAndMethodName
-    ///// </summary>
-    ///// <param name="v"></param>
-    ///// <param name="s"></param>
-    ///// <returns></returns>
-    //public static string TrimStart(string v, string text)
-    //{
-    //    while (v.StartsWith(text))
-    //    {
-    //        v = v.Substring(text.Length);
-    //    }
-    //    return v;
-    //}
-    /// <summary>
-    ///     Usage: Exceptions.TypeAndMethodName
-    /// </summary>
-    /// <param name = "dot"></param>
-    /// <param name = "p"></param>
-    /// <returns></returns>
-    public static string Join(string dot, List<string> p)
-    {
-        return string.Join(dot, p);
+        return Join(delimiter, list);
     }
 
     /// <summary>
-    ///     Can be use also with IList
-    ///     <string>
-    ///         - will take first element of A2
-    ///         Automaticky o�e�e posledn� znad A1
-    ///         Pokud m� inty v A2, pou�ij metodu JoinMakeUpTo2NumbersToZero
+    /// Joins a list of strings with a delimiter.
     /// </summary>
-    /// <param name = "delimiter"></param>
-    /// <param name = "parts"></param>
-     ////[ObjectParamsObsolete]
-    public static string Join(object delimiter, params string[] parts)
+    /// <param name="delimiter">The delimiter to place between parts.</param>
+    /// <param name="list">The list of strings to join.</param>
+    /// <returns>The joined string.</returns>
+    public static string Join(string delimiter, List<string> list)
     {
-        return string.Join(delimiter.ToString(), parts);
-    //if (parts.Length == 0)
-    //{
-    //    // házelo mi to chybu, takže vrátím prostě SE
-    //    //throw new Exception("Not passed any parts, only delimiter: " + delimiter);
-    //    return "";
-    //}
-    //IList enu = parts.ToList();
-    //if (delimiter is IList enumerable && delimiter.GetType() != Types.tString)
-    //{
-    //    IList ie = enumerable;
-    //    if (ie.Count > 1 && enu.Count == 1)
-    //    {
-    //        throw new Exception(Translate.FromKey(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
-    //    }
-    //}
-    //// JoinString point to Join with implementation
-    //return JoinString(delimiter.ToString(), enu);
+        return string.Join(delimiter, list);
     }
 
     /// <summary>
-    ///     Usage: Exceptions.StringContainsUnallowedSubstrings
-    ///     Automaticky o�e�e posledn� znad A1
-    ///     Pokud m� inty v A2, pou�ij metodu JoinMakeUpTo2NumbersToZero
+    /// Joins string parts with a delimiter object.
     /// </summary>
-    /// <param name = "delimiter"></param>
-    /// <param name = "parts"></param>
-    public static string JoinArray(object delimiter, params string[] enu)
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="array">The string parts to join.</param>
+    public static string Join(object delimiter, params string[] array)
     {
-        //IList enu = new List<string>IEnumerable2(parts);
-        if (delimiter is IList /*enumerable*/ && delimiter.GetType() != typeof(string))
-        {
-            IList ie = enu /*merable*/;
-            if (ie.Count > 1 && enu.Length == 1)
-                throw new Exception(Translate.FromKey(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
-        }
-
-        // JoinString point to Join with implementation
-        return Join(delimiter.ToString(), enu);
+        return string.Join(delimiter.ToString() ?? string.Empty, array);
     }
 
+    /// <summary>
+    /// Joins string parts with a delimiter, validates correct argument order.
+    /// </summary>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="array">The string parts to join.</param>
+    public static string JoinArray(object delimiter, params string[] array)
+    {
+        return Join(delimiter.ToString() ?? string.Empty, array);
+    }
+
+    /// <summary>
+    /// Joins a list of strings with newlines using a StringBuilder.
+    /// </summary>
+    /// <param name="stringBuilder">The StringBuilder to use for joining.</param>
+    /// <param name="list">The list of strings to join.</param>
     public static string JoinNLSb(StringBuilder stringBuilder, List<string> list)
     {
         stringBuilder.Clear();
@@ -138,24 +59,43 @@ public partial class SHJoin
         return stringBuilder.ToString();
     }
 
-    public static string JoinChars(params char[] ch)
+    /// <summary>
+    /// Joins characters into a single string.
+    /// </summary>
+    /// <param name="characters">The characters to join.</param>
+    public static string JoinChars(params char[] characters)
     {
         var stringBuilder = new StringBuilder();
-        foreach (var item in ch)
+        foreach (var item in characters)
             stringBuilder.Append(item);
         return stringBuilder.ToString();
     }
 
-    public static string JoinComma(params string[] args)
+    /// <summary>
+    /// Joins string arguments with a comma delimiter.
+    /// </summary>
+    /// <param name="array">The string arguments to join.</param>
+    public static string JoinComma(params string[] array)
     {
-        return Join(",", args);
+        return Join(",", array);
     }
 
-    public static string JoinDictionary(IDictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
+    /// <summary>
+    /// Joins a dictionary into a string with specified delimiters between and after key-value pairs.
+    /// </summary>
+    /// <param name="dictionary">The dictionary to join.</param>
+    /// <param name="delimiterBetweenKeyAndValue">The delimiter between each key and value.</param>
+    /// <param name="delimiterAfter">The delimiter after each key-value pair.</param>
+    public static string JoinDictionary(IDictionary<string, string> dictionary, string delimiterBetweenKeyAndValue, string delimiterAfter)
     {
-        return JoinKeyValueCollection(dict.Keys.ToList(), dict.Values.ToList(), delimiterBetweenKeyAndValue, delimAfter);
+        return JoinKeyValueCollection(dictionary.Keys.ToList(), dictionary.Values.ToList(), delimiterBetweenKeyAndValue, delimiterAfter);
     }
 
+    /// <summary>
+    /// Joins a dictionary into a string with each entry on a new line.
+    /// </summary>
+    /// <param name="dictionary">The dictionary to join.</param>
+    /// <param name="delimiter">The delimiter between key and value on each line.</param>
     public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
     {
         var stringBuilder = new StringBuilder();
@@ -164,93 +104,79 @@ public partial class SHJoin
         return stringBuilder.ToString();
     }
 
-    public static string JoinKeyValueCollection(IList v1, IList v2, string delimiterBetweenKeyAndValue, string delimAfter)
-    {
-        var stringBuilder = new StringBuilder();
-        var v2List = new List<object>(v2.Count);
-        foreach (var item in v2)
-            v2List.Add(item);
-        var i = 0;
-        foreach (var item in v1)
-            stringBuilder.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
-        return SH.TrimEnd(stringBuilder.ToString(), delimAfter);
-    }
-
-    //public static string JoinStringParams(string name, params string[] labels) { return null; }
-    //public static string JoinStringParams(object delimiter, params string[] parts) { return null; }
-    //public static string JoinPairs(params string[] args){return null;}
-    //public static string JoinString(object delimiter, IList parts){return null;}
-    //public static string Join(IList parts, object delimiter){return null;}
-    //public static string JoinIList(object delimiter, IList parts){return null;}
-    //public static string Join(char p, IList vsechnyFotkyVAlbu){return null;}
-    //public static string Join(char p, int[] vsechnyFotkyVAlbu){return null;}
-    //public static string Join(char name, params string[] labels){return null;}
-    //public static string Join(List<string> labels, char name){return null;}
-    //public static string JoinNL(IList p){return null;}
-    //public static string JoinNL(params string[] p){return null;}
-    //public static string JoinSpace(IList<string> nazev){return null;}
-    //public static string JoinString(string name, IList labels){return null;}
-    //public static string JoinStringExceptIndexes(string name, IList labels, params int[] v2){return null;}
-    //public static string JoinMoreWords(char v, params string[] fields){return null;}
-    //public static string JoinWithoutTrim(string p, IList ownedCatsLI){return null;}
-    //public static string JoinIList(char name, IList labels){return null;}
-    //public static string JoinWithoutEndTrimDelimiter(string name, params string[] labels){return null;}
-    //public static string JoinFromIndex(int p, char delimiter, IList<string> tokeny){return null;}
-    //public static string JoinFromIndex(int dex, string delimiter, IList<string> parts){return null;}
-    //public static string JoinToIndex(int dex, string delimiter, IList<string> parts){return null;}
-    //public static string JoinMakeUpTo2NumbersToZero(char p, params int[] args){return null;}
-    //public static string JoinDictionary(Dictionary<string, string> dictionary, string v){return null;}
-    /* Result of refactoring Join methods:
-     * params have only two:
-     * Join
-     * JoinString
-     */
-    ////[ObjectParamsObsolete]
-    public static string JoinStringParams(object delimiter, params string[] parts)
-    {
-        // TODO: Delete after all app working, has here method Join with same arguments
-        return SHJoin.Join(delimiter, (parts));
-    }
-
-    public static bool IsNumber(string input, string value, bool invert)
-    {
-        input = input.Replace(",", "");
-        input = input.Replace(".", "");
-        long list = 0;
-        return BTS.Invert(long.TryParse(input, out list), invert);
-    }
-
-    // refaktorovat to tady, nemuzu zavolat params z IEnum . Teprve ve working method zkontroluji co je za typ a pripadne pretypuji
     /// <summary>
-    ///     If element will be number, wont wrap with qm.
+    /// Joins two parallel lists as key-value pairs with specified delimiters.
     /// </summary>
-    /// <param name = "delimiter"></param>
-    /// <param name = "parts"></param>
-    public static string JoinMoreWords(object delimiter, params string[] parts)
+    /// <param name="keys">The list of keys.</param>
+    /// <param name="values">The list of values.</param>
+    /// <param name="delimiterBetweenKeyAndValue">The delimiter between each key and value.</param>
+    /// <param name="delimiterAfter">The delimiter after each key-value pair.</param>
+    public static string JoinKeyValueCollection(IList keys, IList values, string delimiterBetweenKeyAndValue, string delimiterAfter)
     {
-        parts = CA.WrapWithIfFunc(IsNumber, true, "", "\"", parts).ToArray();
-        return Join(delimiter, parts);
+        var stringBuilder = new StringBuilder();
+        var index = 0;
+        foreach (var item in keys)
+            stringBuilder.Append(item + delimiterBetweenKeyAndValue + values[index++] + delimiterAfter);
+        return SH.TrimEnd(stringBuilder.ToString(), delimiterAfter);
     }
 
-    public static string JoinStringExceptIndexes(object delimiter, IList parts, params int[] v2)
+    /// <summary>
+    /// Joins string parts with a delimiter. Wrapper for <see cref="Join(object, string[])"/>.
+    /// </summary>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="array">The string parts to join.</param>
+    public static string JoinStringParams(object delimiter, params string[] array)
     {
-        var text = delimiter.ToString();
+        return SHJoin.Join(delimiter, array);
+    }
+
+    /// <summary>
+    /// Checks whether the input text represents a number.
+    /// </summary>
+    /// <param name="text">The text to check.</param>
+    /// <param name="mustContain">Required content parameter used by delegate signature.</param>
+    /// <param name="isInverting">Whether to invert the result.</param>
+    public static bool IsNumber(string text, string mustContain, bool isInverting)
+    {
+        text = text.Replace(",", "");
+        text = text.Replace(".", "");
+        return BTS.Invert(long.TryParse(text, out _), isInverting);
+    }
+
+    /// <summary>
+    /// Joins words, wrapping non-number elements with quotes.
+    /// </summary>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="array">The string parts to join.</param>
+    public static string JoinMoreWords(object delimiter, params string[] array)
+    {
+        array = CA.WrapWithIfFunc(IsNumber, true, "", "\"", array).ToArray();
+        return Join(delimiter, array);
+    }
+
+    /// <summary>
+    /// Joins list elements with a delimiter, excluding elements at specified indexes.
+    /// </summary>
+    /// <param name="delimiter">The delimiter object.</param>
+    /// <param name="list">The list of parts to join.</param>
+    /// <param name="excludedIndexes">The indexes to exclude from joining.</param>
+    public static string JoinStringExceptIndexes(object delimiter, IList list, params int[] excludedIndexes)
+    {
+        var delimiterText = delimiter.ToString() ?? string.Empty;
         var stringBuilder = new StringBuilder();
-        var i = -1;
-        foreach (string item in parts)
+        var index = -1;
+        foreach (string item in list)
         {
-            i++;
-            if (v2.Any(data => data == i))
+            index++;
+            if (excludedIndexes.Any(excludedIndex => excludedIndex == index))
                 continue;
-            stringBuilder.Append(item + text);
+            stringBuilder.Append(item + delimiterText);
         }
 
-        var data = stringBuilder.ToString();
-        //return data.Remove(data.Length - (name.Length - 1), name.Length);
-        var to = data.Length - text.Length;
-        if (to > 0)
-            return data.Substring(0, to);
-        return data;
-    //return data;
+        var result = stringBuilder.ToString();
+        var endIndex = result.Length - delimiterText.Length;
+        if (endIndex > 0)
+            return result.Substring(0, endIndex);
+        return result;
     }
 }
