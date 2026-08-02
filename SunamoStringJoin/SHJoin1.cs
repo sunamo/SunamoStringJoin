@@ -129,7 +129,7 @@ public partial class SHJoin
             if (!string.IsNullOrEmpty(item))
             {
                 stringBuilder.Append(item);
-                if (!item.EndsWith('.'))
+                if (!item.EndsWith("."))
                     stringBuilder.Append('.');
             }
         }
