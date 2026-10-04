@@ -1,5 +1,10 @@
 # SunamoStringJoin
 
+## Short description
+
+Knihovna pro spojování více řetězců do jednoho v různých formátech. Poskytuje pomocné třídy pro join s oddělovači. Součást sbírky pinp s testy a Runnerem.
+
+
 Joining more string into one in various formats
 
 ## Overview
