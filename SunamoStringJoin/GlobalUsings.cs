@@ -4,6 +4,5 @@ global using System.Linq;
 global using System.Text;
 global using System.Collections;
 global using SunamoStringJoin._sunamo.SunamoBts;
-global using SunamoStringJoin._sunamo.SunamoLang.SunamoI18N;
 global using SunamoStringJoin._sunamo;
 global using SunamoStringJoin;
